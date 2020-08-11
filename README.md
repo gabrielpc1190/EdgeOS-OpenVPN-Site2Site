@@ -45,24 +45,12 @@ set interfaces openvpn vtun0 openvpn-option "--comp-lzo"
 commit; save
 ```
 
-# This script will run when the Edgerouter boots. It will:
-Traverse the list of countries defined in the top of the script
-Download a list of subnets in each country
-Add it to the ipset table (thats what the Edgerouter uses for network-groups)
-
-# Manually running the script:
-```
-/config/scripts/post-config.d/country-load.sh
-```
+# This tunnel will run when the Edgerouter boots. It will:
+Start the connection to the remote pfSense and start routing the networks defined, in this case are 10.0.0.0/8 and 10.1.0.142/32
 
 # Testing
-After rebooting the edgerouter or manually running the script, you can check that we actually got some subnets in our network-group:
+You can do a ping to a remote device on the remote network or to the remote pfSense box in the tunnel interface
 ```
-sudo ipset -L countries_allowed
+ping 10.1.0.1
+ping 10.1.0.142
 ```
-Dont be fooled by looking in the GUI – it will know nothing about all this happening behind #the scenes!
-Be careful!
-If you do any change to the network group “countries_allowed” from the GUI, the Edgerouter #will empty the list generated from the script! Don’t do that 🙂
-
-The original idea was found on this website. Thanks for the ideas!
-http://www.cron.dk/firewalling-by-country-on-edgerouter/
