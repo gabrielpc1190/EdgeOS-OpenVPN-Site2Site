@@ -51,3 +51,7 @@ You can do a ping to a remote device on the remote network or to the remote pfSe
 ping 10.1.0.1
 ping 10.1.0.142
 ```
+Check the logs with this command on the EdgeRouter
+```
+grep openvpn /var/log/messages
+```
