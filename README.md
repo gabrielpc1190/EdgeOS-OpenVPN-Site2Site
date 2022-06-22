@@ -59,7 +59,9 @@ grep openvpn /var/log/messages
 Download the file:
 ```
 sudo curl -k -o /config/scripts/post-config.d/restart-openvpn.sh https://raw.githubusercontent.com/gabrielpc1190/EdgeOS-OpenVPN-Site2Site/master/restart-openvpn.sh
-
+```
+Edit the file and change the ip address you can reach on the other end, then make the file executable:
+```
 sudo chmod 755 /config/scripts/post-config.d/restart-openvpn.sh
 ```
 Now configure the task to run every x minutes:
