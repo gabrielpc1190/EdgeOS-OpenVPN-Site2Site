@@ -55,3 +55,17 @@ Check the logs with this command on the EdgeRouter
 ```
 grep openvpn /var/log/messages
 ```
+# Optionally, you can have a cron job that runs every x minutes, sending a ping to the other end of the VPN, if no answer, then reload the OpenVPN:
+Download the file:
+```
+sudo curl -k -o /config/scripts/post-config.d/restart-openvpn.sh https://raw.githubusercontent.com/gabrielpc1190/EdgeOS-OpenVPN-Site2Site/master/restart-openvpn.sh
+
+sudo chmod 755 /config/scripts/post-config.d/restart-openvpn.sh
+```
+Now configure the task to run every x minutes:
+```
+set system task-scheduler task openvpn_restart interval 5m
+set system task-scheduler task openvpn_restart executable path /config/scripts/post-config.d/restart-openvpn.sh
+commit; save
+```
+# Happy VPNing!
