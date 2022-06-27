@@ -66,8 +66,9 @@ sudo chmod 755 /config/scripts/post-config.d/restart-openvpn.sh
 ```
 Now configure the task to run every x minutes:
 ```
+configure
 set system task-scheduler task openvpn_restart interval 5m
 set system task-scheduler task openvpn_restart executable path /config/scripts/post-config.d/restart-openvpn.sh
-commit; save
+commit; save; exit
 ```
 # Happy VPNing!
