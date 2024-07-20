@@ -55,7 +55,7 @@ Check the logs with this command on the EdgeRouter
 ```
 grep openvpn /var/log/messages
 ```
-# Optionally, you can have a cron job that runs every x minutes, sending a ping to the other end of the VPN, if no answer, then reload the OpenVPN:
+# Optionally, you can have a cron job that runs every x minutes, sending a ping to the other end of the VPN, if no reply, then disable the vtun0, wait 5 seconds, enable the vtun0:
 Download the file:
 ```
 sudo curl -k -o /config/scripts/post-config.d/restart-openvpn.sh https://raw.githubusercontent.com/gabrielpc1190/EdgeOS-OpenVPN-Site2Site/master/restart-openvpn.sh
